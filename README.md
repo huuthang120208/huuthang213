@@ -1,3 +1,4 @@
+    script_key = "JZYWIdulfKnSxNCTfRtiwyQfFqcXDvkz
     repeat wait() until game:IsLoaded()
 
     delay(DelayTime or 300, function()
