@@ -1,5 +1,5 @@
 _G.PointStats = 9999
-_G.PointsType = "Demon Fruit" -- Choose from: Demon Fruit, Sword, Gun
+_G.PointsType = "Demon Fruit"  Demon Fruit, Sword, Gun
 
 spawn(function()
     while wait() do
