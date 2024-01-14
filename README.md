@@ -17,29 +17,6 @@ spawn(function()
         end)
     end
 end)
-
-spawn(function() -- sword
-    while wait() do
-        pcall(function()
-            if game:GetService("Players")["LocalPlayer"].Data.Points.Value <= 2449 and game:GetService("Players")["LocalPlayer"].Data.Points.Value >= 2  then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Sword",_G.PointStats)
-                end
-        end)
-    end
-end)
-spawn(function() -- Gun
-    while wait() do
-        pcall(function()
-            if game:GetService("Players")["LocalPlayer"].Data.Points.Value <= 2449 and game:GetService("Players")["LocalPlayer"].Data.Points.Value >= 2 then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Gun",_G.PointStats)
-                end
-        end)
-    end
-end)
 spawn(function() -- Demon Fruit
     while wait() do
         pcall(function()
