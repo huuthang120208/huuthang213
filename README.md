@@ -3,7 +3,7 @@ _G.PointStatsSmall = 2448
 spawn(function()
     while wait() do
         pcall(function()
-                if game:GetService("Players")["LocalPlayer"].Data.Points.Value ~= 2550 then
+                if game:GetService("Players")["LocalPlayer"].Data.Points.Value ~= 1 then
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee",_G.PointStats)
                 end
         end)
@@ -12,7 +12,7 @@ end)
 spawn(function()
     while wait() do
         pcall(function()
-                if game:GetService("Players")["LocalPlayer"].Data.Points.Value = 0 then
+                if game:GetService("Players")["LocalPlayer"].Data.Points.Value ~= 1 then
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Defense",_G.PointStats)
                 end
         end)
