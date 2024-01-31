@@ -1,3 +1,4 @@
+game:GetService("RunService"):Set3dRenderingEnabled(false)
 repeat task.wait(5) until game:IsLoaded(3)
 repeat task.wait() until game.Players
 repeat task.wait() until game.Players.LocalPlayer
@@ -17,104 +18,243 @@ for key, object in pairs(workspace:GetDescendants()) do
         object:Destroy()
     end
 end
-_G.WebHook = {
-    ["Enabled"] = true, -- เปิดการใช้งาน
-    ["Url"] = "https://discord.com/api/webhooks/1189932766897377371/7e4i6z6u5q_YrcWdPsD1VIeCELSLsTgTMs0p7hYaNZW-750_70-YfO_PZunf5vxEz4Gu", -- ลิ้งค์เว็บฮุก
-    ["Delay"] = 600 -- วินาที
-}
-_G.Team = "Pirate" -- Marine / Pirate
-_G.MainSettings = {
-        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
-        ['FPSBOOST'] = true, -- ภาพกาก
-        ["FPSLOCKAMOUNT"] = 15, -- จำนวน FPS
-        ['WhiteScreen'] = true, -- จอขาว
-        ['CloseUI'] = false, -- ปิด Ui
-        ["NotifycationExPRemove"] = true, -- ลบ ExP ที่เด้งตอนฆ่ามอน
-        ['AFKCheck'] = 540, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
-        ["LockFragments"] = 5000, -- ล็อคเงินม่วง
-        ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
-            [1] = "Dough-Dough",
-            [2] = "Dragon-Dragon",
-            [3] = "Mammoth-Mammoth",
-            [4] = "Leopard-Leopard",
-            [5] = "Buddha-Buddha",
-            [6] = "Shadow-Shadow",
-            [7] = "Control-Control",
-            [8] = "Spirit-Spirit",
-            [9] = "Venom-Venom",
-            [10] = "Kitsune-Kitsune"
+if script_key then
+return
+end
+--Put Your Key Between ""
+script_key="JZYWIdulfKnSxNCTfRtiwyQfFqcXDvkz";
+DelayTime = 300
+getgenv().FpsBoost = true
+getgenv().Setting = {
+    ["Team"] = "Pirates", --Marines
+    ["Webhook"] = {
+        ["Url"] = "https://discord.com/api/webhooks/1084193047669133392/RKxiRBvaMuGDp8ahQjPgLmyL31m7URoZYBG5b0FrQtt8kc0ypKcjM1sO7JFVnGSvPss9",
+        ["Enabled"] = true,
+        ["Embed"] = true,
+        ["StoredFruit"] = true,
+        ["ImageEmbed"] = true,
+        ["CustomImage"] = false,
+        ["CustomImageUrl"] = "", --Your Url
+        ["OnServerHop"] = true,
+        ["BountyChanged"] = true,
+    }, 
+    ["Panel"] = true,
+    ["FpsBoost"] = {
+        Enable = false,
+        Mode = "Full",--Lite: Just Lower Graphics, Full: Completely Make All Objects Transparent
+    },
+    ["Hide Theme"] = true,
+    ["3D Render Disable"] = false,
+    ["Theme"] = {
+        ["Name"] = "Raiden",--"Old", "Raiden","Ayaka","Hutao","Yelan","Miko","Nahida","Ganyu","Keqing","Nilou","Barbara","Zhongli","Layla"
+        ["Custom"] = {
+            ["Enable"] = true,
+            ['char_size'] = UDim2.new(0.668, 0, 1.158, 0),
+            ['char_pos'] = UDim2.new(0.463, 0, -0.105, 0),
+            ['title_color'] = Color3.fromRGB(255, 221, 252),
+            ['titleback_color'] = Color3.fromRGB(169, 20, 255),
+            ['list_color'] = Color3.fromRGB(255, 221, 252),
+            ['liststroke_color'] = Color3.fromRGB(151, 123, 207),
+            ['button_color'] = Color3.fromRGB(255, 221, 252)
+        },
+    },
+    ["In Combat Reset"] = true, -- Shouldn't Cause Much False Resets, Enable This Make Farming Much Faster
+    ["BypassTP"] = {
+        ["Enable"] = true,
+        ["Attempt"] = 5, -- Tween If Failed After x Attempts
+    },
+    ["DodgeSkill"] = true,
+    ["SpectatePlayer"] = false,
+    ["Config"] = {
+        ["nameaccount1"] = "nameconfig.txt",
+        ["nameaccount2"] = "nameconfig.txt",
+    },
+    ["Auto Use Race V3"] = {
+        Enable = true,
+        UseBelowHealth = false, -- Below Specific Health It Will use Race V3
+        Health = 4500,
+        NearPlayer = true, -- Only use If Near Player
+    },
+    ["Auto Use Race V4"] = true, -- No Way you are turning this off
+    ["Auto Dash If Mink V4"] = false,
+    ["Auto Dash If Ghoul V4"] = false,
+    ["Spam All Skill On Race Transform V4"] = false,
+    ["Failed To Load Data"] = {
+        Rejoin = true,
+        TimeToCheck = 30,
+    },
+    ["Detect KeyWords"] = { -- If There Is A Person Says A Key Word In Chat, It Will Stop Auto Bounty And  Server Hop
+        Enable = false,
+        Words = { "Hacker", "Exploiter", "Scripter", "Script", "Hack"}
+    },
+    AutoConfigMelee = false,
+    AutoConfigSword = false,
+    AutoConfigFruit = false,
+    SwitchPlayerKeybind = "G", -- Except Y Keybind
+    ["LimitServerHopTime"] ={ -- Only Hop After "Time" Seconds
+        Enable = false,
+        Time = 600, --Second
+    },
+    ["Position Config"] = {
+        Mode = "Default",-- You Can Create Your Own Mode By Making An Index In The Table Like Custom
+        Tween = true, -- If false then it will teleport when near target
+        SkyTween = false, -- Tweening In The Sky Till You Are Near The Player, Recommended For Using Gun Method
+        Spin = true,
+        ["Default"] = {
+            DistanceFromPlayer = {
+                x = 3, y = 3, z = 3,
+            }
+        },
+        ["Custom"] = {
+            DistanceFromPlayer = {
+                x = 0, y = 3, z = 0
+            }
         }
-    }
-_G.Fruits_Settings = { -- ตั้งค่าผล
-    ['Main_Fruits'] = {'Magma-Magma'}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
-    ['Select_Fruits'] = {'Magma-Magma',} -- กินหรือซื้อตอนไม่มีผล
-}
-_G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
-    ['Rainbow_Haki'] = false,
-    ["MusketeerHat"] = false,
-    ["PullLever"] = true,
-    ['DoughQuests_Mirror'] = {
-        ['Enabled'] = true,
-        ['UseFruits'] = false,
-    }        
-}
-_G.Races_Settings = { -- ตั้งค่าเผ่า
-    ['Race'] = {
-        ['EnabledEvo'] = true,
-        ["v2"] = true,
-        ["v3"] = true,
-        ["Races_Lock"] = {
-            ["Races"] = { -- Select Races U want
-                ["Mink"] = false,
-                ["Human"] = false,
-                ["Fishman"] = true,
+    },
+    ["ChatKill"] = {
+        Enable = false,
+        Chat = {
+            "Go Buy W-azure Now","I Got A Gaming Chair","I'm Just Too Good"
+        },
+    },
+    ["Mention"] = {
+        ["Enable"] = false,
+        ["Id"] = "everyone", -- You Can Replace With Your Id (not your discord Name)
+        ["EveryBounty"] = 16000,
+    },
+    ["FpsLock"] = {
+        ["Enable"] = false,
+        ["Cap"] = 30,
+    },
+    ["LockBounty"] = {
+        ["Enable"] = false,
+        ["Cap"] = 30000000,
+        ["Action"] = "Kick", -- Kick, Shutdown
+        ["SendMessage"] = false,
+        ["Message"] = "Congratulation You Have Reached The Bounty Cap MyBounty 🔥 🔥 :fireworks: :fireworks: :fireworks:" -- It Will Replace MyBounty With Your Current Bounty, Add Ping Everyone If You Want
+    },
+    ["Click"] = {
+        ["Enable"] = true,
+        ["FastClick"] = true,
+        ["OnLowHealthDisable"] = true,
+        ["LowHealth"] = 5000,
+    },
+    ["Misc"] = {
+        ["AutoBuyRandomandStoreFruit"] = true,
+        ["AutoBuySurprise"] = true,
+    },
+    ["Invisible"] = true, -- Self Explain
+    ["IgnoreFriends"] = false, --Server Hop When Your friends in your server
+    ["GunMethod"] = false, --Use Melee,Gun Will automaticly disable invisible for things
+    ["GunMethodSetting"] = {
+        LessSusKillTest=true,
+        StartHealth = 2000, -- Below Is Setting For Decrease Sus Kill From Gun Method
+        waittime=10,
+        EndHealth = 4000,
+    },
+    ["Notify"] = {
+        Enable = false,
+        CustomIcon = false,
+        Image = "sticker.png", -- The Path Is: W-azure/AutoBounty/Notify
+    },
+    ["SpamSkill"] = false, -- Will use all skills as fast as possbile ignore holding skills
+    ["Weapons"] = { -- Select Weapon, Self Explain
+        ["Melee"] = {
+            ["Enable"] = true,
+            ["Delay"] = 3,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
+            [ "X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
+
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
             },
-            ["RerollsWhenFragments"] = 7000 -- Random Races When Your Fragments is >= Settings
-        }
+        },
+        ["Blox Fruit"] = {
+            ["Enable"] = true,
+            ["Delay"] = 2.5,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 1.5,
+                    ["TimeToNextSkill"] = 0,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
+
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
+                ["V"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
+                ["F"] = {
+                    ["Enable"] = false,
+                    ["HoldTime"] = 0,
+                    ["TimeToNextSkill"] = 0,
+                },
+            },
+        },
+        ["Sword"] = {
+            ["Enable"] = false,
+            ["Delay"] = 0.5,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0.1,
+                    ["TimeToNextSkill"] = 0,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0.2,
+                    ["TimeToNextSkill"] = 0,
+                },
+            },
+        },
+        ["Gun"] = {
+            ["Enable"] = false,
+            ["Delay"] = 0.5,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0.1,
+                    ["TimeToNextSkill"] = 0,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0.1,
+                    ["TimeToNextSkill"] = 0,
+                },
+            },
+        },
+
     }
 }
-_G.Settings_Melee = { -- หมัดที่จะทำ
-    ['Superhuman'] = true,
-    ['DeathStep'] = true,
-    ['SharkmanKarate'] = true,
-    ['ElectricClaw'] = true,
-    ['DragonTalon'] = true,
-    ['Godhuman'] = true,
-}
-_G.FarmMastery_Settings = {
-    ['Melee'] = true,
-    ['Sword'] = false,
-    ['DevilFruits'] = true,
-    ['Select_Swords'] = {
-        ["AutoSettings"] = true, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
-        ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
-            "Tushita",
-            "Yama"
-        }
-    }
-}
-_G.SwordSettings = { -- ดาบที่จะทำ
-    ['Saber'] = false,
-    ["Pole"] = false,
-    ['MidnightBlade'] = false,
-    ['Shisui'] = false,
-    ['Saddi'] = false,
-    ['Wando'] = false,
-    ['Yama'] = false,
-    ['Rengoku'] = false,
-    ['Canvander'] = true,
-    ['BuddySword'] = false,
-    ['TwinHooks'] = false,
-    ['HallowScryte'] = false,
-    ['TrueTripleKatana'] = false,
-    ['CursedDualKatana'] = true,
-}
-_G.GunSettings = { -- ปืนที่จะทำ
-    ['Kabucha'] = false,
-    ['SerpentBow'] = false,
-    ['SoulGuitar'] = false,
-}
-getgenv().Key = "MARU-PSR6D-KW6B2-5ZST-WCT0Z-7F8B"
-getgenv().id = "1084122060307050586"
-getgenv().Script_Mode = "Kaitun_Script"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+repeat wait()
+until game:IsLoaded()
+delay(DelayTime or 300,function()
+    local CG = game:GetService("CoreGui")
+    if not CG:FindFirstChild("W-azureHubAutoBounty") then
+       game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    end
+end)
+wait(2)
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/1e7c7be9c64d317c9642fbd179359e72.lua"))()
