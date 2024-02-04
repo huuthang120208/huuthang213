@@ -1,4 +1,4 @@
-if ggame:GetService("Players").localPlayer.Data.Stats.Melee.Level.Value and game:GetService("Players").localPlayer.Data.Stats.Defense.Level.Value and game:GetService("Players").localPlayer.Data.Stats["Demon Fruit"].Level.Value ~= 2550 then 
+if game:GetService("Players").localPlayer.Data.Stats.Melee.Level.Value and game:GetService("Players").localPlayer.Data.Stats.Defense.Level.Value and game:GetService("Players").localPlayer.Data.Stats["Demon Fruit"].Level.Value ~= 2550 then 
  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Pirates")
  wait(5)
  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
