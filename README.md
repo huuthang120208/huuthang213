@@ -1,38 +1,48 @@
-if game:GetService("Players").localPlayer.Data.Stats.Melee.Level.Value and game:GetService("Players").localPlayer.Data.Stats.Defense.Level.Value and game:GetService("Players").localPlayer.Data.Stats["Demon Fruit"].Level.Value ~= 2550 then 
- game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Pirates")
- wait(5)
- game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
- _G.PointStats = 9999
- _G.PointStatsSmall = 2550
- spawn(function()
-    while wait() do
+settings().Rendering.QualityLevel = 10;
         pcall(function()
-            if game:GetService("Players").localPlayer.Data.Stats.Melee.Level.Value ~= 2550 then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee",_G.PointStats)
+            game:GetService("Lighting").FantasySky:Destroy()
+            local g = game
+            local w = g.Workspace
+            local l = g.Lighting
+            local t = w.Terrain
+            t.WaterWaveSize = 0
+            t.WaterWaveSpeed = 0
+            t.WaterReflectance = 0
+            t.WaterTransparency = 0
+            l.GlobalShadows = false
+            l.FogEnd = 9e9
+            l.Brightness = 0
+            settings().Rendering.QualityLevel = "Level01"
+            for i, v in pairs(g:GetDescendants()) do
+                if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
+                    v.Material = "Plastic"
+                    v.Reflectance = 0
+                elseif v:IsA("Decal") or v:IsA("Texture") then
+                    v.Transparency = 1
+                elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                    v.Lifetime = NumberRange.new(0)
+                elseif v:IsA("Explosion") then
+                    v.BlastPressure = 1
+                    v.BlastRadius = 1
+                elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                    v.Enabled = false
+                elseif v:IsA("MeshPart") then
+                    v.Material = "Plastic"
+                    v.Reflectance = 0
+                    v.TextureID = 10385902758728957
                 end
+            end
+            for i, e in pairs(l:GetChildren()) do
+                if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                    e.Enabled = false
+                end
+            end
+            for i, v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
+                if v.Name == ("Water;") then
+                    v.Transparency = 1
+                    v.Material = "Plastic"
+                end
+            end
         end)
-    end
-end)
-spawn(function()
-     while wait() do
-         pcall(function()
-            if game:GetService("Players").localPlayer.Data.Stats.Defense.Level.Value ~= 2550 then
-                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Defense",_G.PointStats)
-                 end
-         end)
-     end
- end)
-
- spawn(function() -- demon fruit
-     while wait() do
-         pcall(function()
-            if game:GetService("Players").localPlayer.Data.Stats["Demon Fruit"].Level.Value ~= 2550 then
-                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
-                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
-                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Demon Fruit",_G.PointStatsSmall) 
-                 end
-         end)
-     end
- end)
-end
-
+    end)
+    
