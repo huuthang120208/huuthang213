@@ -276,7 +276,7 @@ end
 u.Gui = Instance.new("ScreenGui")
 u.Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 u.Gui.Name = "Sea Hub GUI"
-getgenv().ReadyForGuiLoaded = false
+getgenv().ReadyForGuiLoaded = true
 spawn(
     function()
         u.Gui.Enabled = false
