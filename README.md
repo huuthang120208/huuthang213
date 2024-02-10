@@ -4703,30 +4703,30 @@ print("Sucvat123")
 local rnd = tostring(math.random(1,100000))
 local Library = GetUi()
 
--- (function() 
---     local concac
+ (function() 
+     local concac
 
---     if isfile("uilib.lua") then 
---         concac = readfile("uilib.lua")
---         Library=loadstring(concac)()
---         --print(Library)
---     else
---         concac = game:HttpGet("https://raw.githubusercontent.com/7bgqRy0CC2wCjblo9W4kmWBejs72uKCNqI7XqUL/SeaUILib/main/UI/Logo")
---     end
---     if not Library then 
---         Library =loadstring(syn.crypt.decrypt(concac,"cac"))() end
--- end)()
+     if isfile("uilib.lua") then 
+         concac = readfile("uilib.lua")
+         Library=loadstring(concac)()
+         print(Library)
+     else
+         concac = game:HttpGet("https://raw.githubusercontent.com/7bgqRy0CC2wCjblo9W4kmWBejs72uKCNqI7XqUL/SeaUILib/main/UI/Logo")
+     end
+     if not Library then 
+         Library =loadstring(syn.crypt.decrypt(concac,"cac"))() end
+ end)()
 local keylist = {"af298fe2fe0361c","e69327320bfcb7e","66036fb2f36e983","f27c0d2a3bee5a6","","ad4f5fc1ec8dd0a","2341aff65def585"} --,"d96d10a1b806168"
 local key = getgenv().Key or ""
---setclipboard(syn.crypt.decrypt(concac,"cac"))
---local Library=loadstring(concac)()
+setclipboard(syn.crypt.decrypt(concac,"cac"))
+local Library=loadstring(concac)()
 
 wait()
 local FieldFarmPos = {
-    -- SunflowerField = {
-    --     Listpos = {},
-    --     Range = {}
-    -- }
+     SunflowerField = {
+         Listpos = {},
+         Range = {}
+     }
 }
 local Cache = {}
 local plr = game.Players.LocalPlayer
