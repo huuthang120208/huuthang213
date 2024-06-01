@@ -1,11 +1,11 @@
-game:GetService("RunService"):Set3dRenderingEnabled(false)
-repeat task.wait() until game:IsLoaded()
+repeat task.wait(5) until game:IsLoaded(3)
 repeat task.wait() until game.Players
 repeat task.wait() until game.Players.LocalPlayer
 repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
 repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
 UserSettings():GetService('UserGameSettings').MasterVolume = 0;
 settings().Rendering.QualityLevel = 1;
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat,false)
 game:GetService("Lighting").GlobalShadows = false
 for key, object in pairs(workspace:GetDescendants()) do
     if object:IsA("Part") or object:IsA("UnionOperation") or object:IsA("MeshPart") then
@@ -17,160 +17,104 @@ for key, object in pairs(workspace:GetDescendants()) do
         object:Destroy()
     end
 end
-script_key = "JZYWIdulfKnSxNCTfRtiwyQfFqcXDvkz"
-getgenv().Team = "Pirates"
-getgenv().WebhookSetting = {
-    Enable = true,
-    Url = "https://discord.com/api/webhooks/1084193047669133392/RKxiRBvaMuGDp8ahQjPgLmyL31m7URoZYBG5b0FrQtt8kc0ypKcjM1sO7JFVnGSvPss9",
-    Embed = true,
-    StoredFruit = true,
-    ImageEmbed = true,
-    CustomImage = false,
-    CustomImageUrl = "", --Your Url
-    OnServerHop = true,
-    BountyChanged = true,
+_G.WebHook = {
+    ["Enabled"] = false, -- เปิดการใช้งาน
+    ["Url"] = "https://discord.com/api/webhooks/1189932766897377371/7e4i6z6u5q_YrcWdPsD1VIeCELSLsTgTMs0p7hYaNZW-750_70-YfO_PZunf5vxEz4Gu", 
+    ["Delay"] = 600 -- วินาที
 }
-getgenv().PlayerSetting = {
-    SafeMode = true,
-    SafeModeHealth = {5500,70},--Number And %, Start Safe Mode And Stop Safe Mode
-    UseRaceV3 = true,
-    SmartUseRaceV3= true,
-    DashIfV4 = false,
-    Dash=false,
-    IgnoreInCombat = true, --Turn This Off When Reseting Or Hop You Lost Bounty (Rare, Happens On Some Accounts)
-    ChatKillEnable = false,
-    Chat = {"Ez","You're just too bad"},
-    IgnoreFriends = false, --Serverhop if you friend in your server
+_G.Team = "Pirate" -- Marine / Pirate
+_G.MainSettings = {
+        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
+        ['FPSBOOST'] = true, -- ภาพกาก
+        ["FPSLOCKAMOUNT"] = 15, -- จำนวน FPS
+        ['WhiteScreen'] = true, -- จอขาว
+        ['CloseUI'] = false, -- ปิด Ui
+        ["NotifycationExPRemove"] = false, -- ลบ ExP ที่เด้งตอนฆ่ามอน
+        ['AFKCheck'] = 540, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
+        ["LockFragments"] = 5000, -- ล็อคเงินม่วง
+        ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
+            [1] = "Dough-Dough",
+            [2] = "Dragon-Dragon",
+            [3] = "Mammoth-Mammoth",
+            [4] = "Leopard-Leopard",
+            [5] = "Buddha-Buddha",
+            [6] = "Shadow-Shadow",
+            [7] = "Control-Control",
+            [8] = "Spirit-Spirit",
+            [9] = "Venom-Venom",
+            [10] = "Kitsune-Kitsune"
+        }
+    }
+_G.Fruits_Settings = { -- ตั้งค่าผล
+    ['Main_Fruits'] = {}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
+    ['Select_Fruits'] = {} -- กินหรือซื้อตอนไม่มีผล
 }
-getgenv().AttackSetting = {
-    ForceMelee = true,
-    ForceMeleeTime = 3.5,
-    StopAttack =true, --When Meet Below Condition
-    StopAttackAtHealth = 80,--%
-    FastAttack=true, -- Toggle Fast Attack
+_G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
+    ['Rainbow_Haki'] = false,
+    ["MusketeerHat"] = false,
+    ["PullLever"] = false,
+    ['DoughQuests_Mirror'] = {
+        ['Enabled'] = false,
+        ['UseFruits'] = false,
+    }        
 }
-getgenv().UseSkillSetting = {
-    -- Three Methods: "Normal", "Fast", "Spam", "SpamAll"
-    MethodIfTargetOnV4 = "Fast",
-    MethodIfPlayerOnV4 = "Normal",
-    MethodIfTargetUseFruit = {Fruits={},Method="Fast"},
-    NormalMethod = "Normal",
-    LowHealthPlayerCondition = { --Player Can Attack Us, No Need For Slow Attack
-        Enable = true,
-        Health = 70,--%Health That Are Low
-        Method = "Fast",
-    },
-    LowHealthTargetCondition = {
-        Enable = true,
-        Health = 30,--%Health That Are Low
-        DelayFirstTime = {true,2}, --1 Is Enable, 2 Is Second To Delay Before Attack Again
-        Method = "Normal",
-        WaitTime = 1.5,-- If Normal Method, Wait Every Skill If It Hits Target
+_G.Races_Settings = { -- ตั้งค่าเผ่า
+    ['Race'] = {
+        ['EnabledEvo'] = false,
+        ["v2"] = false,
+        ["v3"] = false,
+        ["Races_Lock"] = {
+            ["Races"] = { -- Select Races U want
+                ["Mink"] = false,
+                ["Human"] = false,
+                ["Fishman"] = false,
+            },
+            ["RerollsWhenFragments"] = 5000 -- Random Races When Your Fragments is >= Settings
+        }
     }
 }
-getgenv().WeaponsSetting = {
-    ["Melee"] = {
-        ["Enable"] = true,
-        ["Delay"] = 4, 
-        ["SwitchNextWeaponIfCooldown"] = true,
-        ["Skills"] = {
-            ["Z"] = {
-                ["Enable"] = true,
-                ["NoPredict"] = true, -- For Dragon Tailon, Disable it 
-                ["HoldTime"] = 1.8,
-                ["TimeToNextSkill"] = 0,
-            },
-        [ "X"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0,
-                ["TimeToNextSkill"] = 0,
-            },
-
-            ["C"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0,
-                ["TimeToNextSkill"] = 0,
-            },
-        },
-    },
-    ["Blox Fruit"] = {
-        ["Enable"] = true,
-        ["Delay"] = 3,
-        ["SwitchNextWeaponIfCooldown"] = true,
-        ["Skills"] = {
-            ["Z"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 2,
-                ["TimeToNextSkill"] = 0,
-            },
-            ["X"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0,
-                ["TimeToNextSkill"] = 0,
-            },
-
-            ["C"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0,
-                ["TimeToNextSkill"] = 0,
-            },
-            ["V"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0,
-                ["TimeToNextSkill"] = 0,
-            },
-            ["F"] = {
-                ["Enable"] = false,
-                ["HoldTime"] = 0,
-                ["TimeToNextSkill"] = 0,
-            },
-        },
-    },
-    ["Sword"] = {
-        ["Enable"] = false,
-        ["Delay"] = 0.5,
-        ["Skills"] = {
-            ["Z"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0.1,
-                ["TimeToNextSkill"] = 0,
-            },
-            ["X"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0.2,
-                ["TimeToNextSkill"] = 0,
-            },
-        },
-    },
-    ["Gun"] = {
-        ["Enable"] = false,
-        ["Delay"] = 0.5,
-        ["Skills"] = {
-            ["Z"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0.1,
-                ["TimeToNextSkill"] = 0,
-            },
-            ["X"] = {
-                ["Enable"] = true,
-                ["HoldTime"] = 0.1,
-                ["TimeToNextSkill"] = 0,
-            },
-        },
-    },
+_G.Settings_Melee = { -- หมัดที่จะทำ
+    ['Superhuman'] = false,
+    ['DeathStep'] = false,
+    ['SharkmanKarate'] = false,
+    ['ElectricClaw'] = false,
+    ['DragonTalon'] = false,
+    ['Godhuman'] = false,
 }
-getgenv().Theme = { -- getgenv().Theme = false if you want to disable
-    OldTheme = false,
-    Name="Hutao", --"Raiden","Ayaka","Hutao","Yelan","Miko","Nahida","Ganyu","Keqing","Nilou","Barbara","Zhongli","Layla"
-    Custom={
-            ["Enable"] = false,
-            ['char_size'] = UDim2.new(0.668, 0, 1.158, 0),
-            ['char_pos'] = UDim2.new(0.463, 0, -0.105, 0),
-            ['title_color'] = Color3.fromRGB(255, 221, 252),
-            ['titleback_color'] = Color3.fromRGB(169, 20, 255),
-            ['list_color'] = Color3.fromRGB(255, 221, 252),
-            ['liststroke_color'] = Color3.fromRGB(151, 123, 207),
-            ['button_color'] = Color3.fromRGB(255, 221, 252)
-       }
+_G.FarmMastery_Settings = {
+    ['Melee'] = false,
+    ['Sword'] = false,
+    ['DevilFruits'] = false,
+    ['Select_Swords'] = {
+        ["AutoSettings"] = false, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
+        ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
+            "Tushita",
+            "Yama"
+        }
+    }
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/248f97d7a28a4d09c641d8279a935333.lua"))()
+_G.SwordSettings = { -- ดาบที่จะทำ
+    ['Saber'] = false,
+    ["Pole"] = false,
+    ['MidnightBlade'] = false,
+    ['Shisui'] = false,
+    ['Saddi'] = false,
+    ['Wando'] = false,
+    ['Yama'] = false,
+    ['Rengoku'] = false,
+    ['Canvander'] = false,
+    ['BuddySword'] = false,
+    ['TwinHooks'] = false,
+    ['HallowScryte'] = false,
+    ['falseTripleKatana'] = false,
+    ['CursedDualKatana'] = false,
+}
+_G.GunSettings = { -- ปืนที่จะทำ
+    ['Kabucha'] = false,
+    ['SerpentBow'] = false,
+    ['SoulGuitar'] = false,
+}
+getgenv().Key = "MARU-DTR0F-RZ5N-CG64C-FQMK-TXKW9"
+getgenv().id = "1084122060307050586"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
