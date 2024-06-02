@@ -24,12 +24,12 @@ _G.WebHook = {
 }
 _G.Team = "Pirate" -- Marine / Pirate
 _G.MainSettings = {
-        ["EnabledHOP"] = false, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
-        ['FPSBOOST'] = false, -- ภาพกาก
+        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
+        ['FPSBOOST'] = true, -- ภาพกาก
         ["FPSLOCKAMOUNT"] = 15, -- จำนวน FPS
-        ['WhiteScreen'] = false, -- จอขาว
+        ['WhiteScreen'] = true, -- จอขาว
         ['CloseUI'] = false, -- ปิด Ui
-        ["NotifycationExPRemove"] = false, -- ลบ ExP ที่เด้งตอนฆ่ามอน
+        ["NotifycationExPRemove"] = true, -- ลบ ExP ที่เด้งตอนฆ่ามอน
         ['AFKCheck'] = 540, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
         ["LockFragments"] = 5000, -- ล็อคเงินม่วง
         ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
@@ -46,27 +46,27 @@ _G.MainSettings = {
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล
-    ['Main_Fruits'] = {}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
-    ['Select_Fruits'] = {} -- กินหรือซื้อตอนไม่มีผล
+    ['Main_Fruits'] = {'Magma-Magma'}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
+    ['Select_Fruits'] = {"Magma-Magma"} -- กินหรือซื้อตอนไม่มีผล
 }
 _G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
     ['Rainbow_Haki'] = false,
     ["MusketeerHat"] = false,
-    ["PullLever"] = false,
+    ["PullLever"] = true,
     ['DoughQuests_Mirror'] = {
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['UseFruits'] = false,
     }        
 }
 _G.Races_Settings = { -- ตั้งค่าเผ่า
     ['Race'] = {
-        ['EnabledEvo'] = false,
-        ["v2"] = false,
-        ["v3"] = false,
+        ['EnabledEvo'] = true,
+        ["v2"] = true,
+        ["v3"] = true,
         ["Races_Lock"] = {
             ["Races"] = { -- Select Races U want
-                ["Mink"] = false,
-                ["Human"] = false,
+                ["Mink"] = true,
+                ["Human"] = true,
                 ["Fishman"] = false,
             },
             ["RerollsWhenFragments"] = 5000 -- Random Races When Your Fragments is >= Settings
@@ -74,19 +74,19 @@ _G.Races_Settings = { -- ตั้งค่าเผ่า
     }
 }
 _G.Settings_Melee = { -- หมัดที่จะทำ
-    ['Superhuman'] = false,
-    ['DeathStep'] = false,
-    ['SharkmanKarate'] = false,
-    ['ElectricClaw'] = false,
-    ['DragonTalon'] = false,
-    ['Godhuman'] = false,
+    ['Superhuman'] = true,
+    ['DeathStep'] = true,
+    ['SharkmanKarate'] = true,
+    ['ElectricClaw'] = true,
+    ['DragonTalon'] = true,
+    ['Godhuman'] = true,
 }
 _G.FarmMastery_Settings = {
-    ['Melee'] = false,
+    ['Melee'] = true,
     ['Sword'] = false,
-    ['DevilFruits'] = false,
+    ['DevilFruits'] = true,
     ['Select_Swords'] = {
-        ["AutoSettings"] = false, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
+        ["AutoSettings"] = true, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
         ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
             "Tushita",
             "Yama"
@@ -94,27 +94,27 @@ _G.FarmMastery_Settings = {
     }
 }
 _G.SwordSettings = { -- ดาบที่จะทำ
-    ['Saber'] = true,
+    ['Saber'] = false,
     ["Pole"] = false,
     ['MidnightBlade'] = false,
     ['Shisui'] = false,
     ['Saddi'] = false,
     ['Wando'] = false,
-    ['Yama'] = false,
+    ['Yama'] = true,
     ['Rengoku'] = false,
     ['Canvander'] = false,
     ['BuddySword'] = false,
     ['TwinHooks'] = false,
     ['HallowScryte'] = false,
-    ['falseTripleKatana'] = false,
-    ['CursedDualKatana'] = false,
+    ['TrueTripleKatana'] = false,
+    ['CursedDualKatana'] = true,
 }
 _G.GunSettings = { -- ปืนที่จะทำ
-    ['Kabucha'] = false,
+    ['Kabucha'] = true,
     ['SerpentBow'] = false,
     ['SoulGuitar'] = false,
 }
-getgenv().Key = ""MARU-PSR6D-KW6B2-5ZST-WCT0Z-7F8B"
+getgenv().Key = "MARU-PSR6D-KW6B2-5ZST-WCT0Z-7F8B"
 getgenv().id = "1084122060307050586"
 getgenv().Script_Mode = "Kaitun_Script"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
