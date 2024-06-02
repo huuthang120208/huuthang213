@@ -24,10 +24,10 @@ _G.WebHook = {
 }
 _G.Team = "Pirate" -- Marine / Pirate
 _G.MainSettings = {
-        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
-        ['FPSBOOST'] = true, -- ภาพกาก
+        ["EnabledHOP"] = false, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
+        ['FPSBOOST'] = false, -- ภาพกาก
         ["FPSLOCKAMOUNT"] = 15, -- จำนวน FPS
-        ['WhiteScreen'] = true, -- จอขาว
+        ['WhiteScreen'] = false, -- จอขาว
         ['CloseUI'] = false, -- ปิด Ui
         ["NotifycationExPRemove"] = false, -- ลบ ExP ที่เด้งตอนฆ่ามอน
         ['AFKCheck'] = 540, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
@@ -94,7 +94,7 @@ _G.FarmMastery_Settings = {
     }
 }
 _G.SwordSettings = { -- ดาบที่จะทำ
-    ['Saber'] = false,
+    ['Saber'] = true,
     ["Pole"] = false,
     ['MidnightBlade'] = false,
     ['Shisui'] = false,
@@ -114,7 +114,7 @@ _G.GunSettings = { -- ปืนที่จะทำ
     ['SerpentBow'] = false,
     ['SoulGuitar'] = false,
 }
-getgenv().Key = "MARU-DTR0F-RZ5N-CG64C-FQMK-TXKW9"
+getgenv().Key = ""MARU-PSR6D-KW6B2-5ZST-WCT0Z-7F8B"
 getgenv().id = "1084122060307050586"
 getgenv().Script_Mode = "Kaitun_Script"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
